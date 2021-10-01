@@ -1,0 +1,9 @@
+expected_add_missing_user_id = {'error': ['Both isbn and user_id are required - 123-123 None']}
+expected_add_missing_isbn = {'error': ['Both isbn and user_id are required - None 1']}
+expected_add_invalid_user_id = {'error': 'user_id - 10 doesnt exist'}
+expected_add_invalid_isbn = {'error': 'isbn  - bogus_isbn doesnt exist'}
+expected_delete_missing_user_id = {'error': 'user_id must be int'}
+expected_delete_invalid_user_id = {'error': 'user_id - 13 doesnt exist'}
+expected_put_missing_old_isbn = {'error': 'Either old or new isbn None - 123-345 doesnt exist'}
+expected_put_missing_new_isbn = {'error': 'Either old or new isbn 123-123 - None doesnt exist'}
+expected_put_missing_isbn = {'error': 'Either old or new isbn None - None doesnt exist'}

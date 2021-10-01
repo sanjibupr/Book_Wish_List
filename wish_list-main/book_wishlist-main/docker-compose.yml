@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  interview-flask:
+    build:
+      context: .
+      dockerfile: src/Dockerfile
+    ports:
+      - '5000:5000'
+      - '8888:8888'
+      - '6380:6380'
+    env_file: .env-safe
+    environment:
+      - FLASK_ENV=development
+    volumes:
+      - .:/book-wishlist-flask
+    entrypoint: /myapp/wait-for-postgres.sh
+    command: /myapp/start-script.sh
+    depends_on:
+      - postgres
+    networks:
+      - local-compose-net
+
+  postgres:
+    build:
+      context: .
+      dockerfile: compose/postgres/Dockerfile
+    env_file: .env-safe
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+    networks:
+      - local-compose-net
+
+networks:
+    local-compose-net:
